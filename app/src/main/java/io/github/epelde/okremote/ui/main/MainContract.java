@@ -5,11 +5,17 @@ package io.github.epelde.okremote.ui.main;
  */
 public interface MainContract {
 
-    public interface MainView {
+    interface MainView {
 
+        void renderText(String text);
     }
 
-    public interface MainPresenter {
+    interface MainPresenter {
 
+        void attachView(MainContract.MainView view);
+
+        void detachView();
+
+        void init();
     }
 }
