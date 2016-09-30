@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OkRemote</string>
+    <string name="device_light">LED</string>
 </resources>

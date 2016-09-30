@@ -7,7 +7,7 @@ public interface MainContract {
 
     interface MainView {
 
-        void renderText(String text);
+        void displayStatus(boolean checked);
     }
 
     interface MainPresenter {
@@ -17,5 +17,7 @@ public interface MainContract {
         void detachView();
 
         void init();
+
+        void toggle(boolean checked);
     }
 }

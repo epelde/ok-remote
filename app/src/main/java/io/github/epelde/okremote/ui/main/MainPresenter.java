@@ -53,12 +53,18 @@ public class MainPresenter implements MainContract.MainPresenter {
                     @Override
                     public void call() {
                         Log.d("TAG", "* * * COMPLETED");
-                        renderText("COMPLETED");
+                        displayStatus();
                     }
                 });
     }
 
-    private void renderText(String text) {
-        this.view.renderText(text);
+    @Override
+    public void toggle(boolean checked) {
+
     }
+
+    private void displayStatus() {
+        this.view.displayStatus(true);
+    }
+
 }

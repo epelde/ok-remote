@@ -2,12 +2,13 @@ package io.github.epelde.okremote.ui.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.support.v7.widget.SwitchCompat;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.github.epelde.okremote.OkRemoteApp;
 import io.github.epelde.okremote.R;
 
@@ -15,8 +16,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Inject
     MainContract.MainPresenter presenter;
-    @BindView(R.id.textview_text)
-    TextView text;
+
+    @BindView(R.id.light_switch)
+    SwitchCompat lightSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         ButterKnife.bind(this);
         presenter.attachView(this);
         presenter.init();
+        initViews();
     }
 
     @Override
@@ -36,8 +39,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         }
     }
 
+    @OnClick(R.id.light_switch)
+    public void toggle() {
+        presenter.toggle(lightSwitch.isChecked());
+    }
+
     @Override
-    public void renderText(String text) {
-        this.text.setText(text);
+    public void displayStatus(boolean checked) {
+        lightSwitch.setEnabled(true);
+        lightSwitch.setChecked(checked);
+    }
+
+    private void initViews() {
+        lightSwitch.setEnabled(false);
     }
 }
