@@ -15,7 +15,5 @@ import io.github.epelde.okremote.ui.main.MainActivity;
 @Component(modules = {ApplicationModule.class, NetworkModule.class})
 public interface ApplicationComponent {
 
-    void inject(OkRemoteApp target);
-
     void inject(MainActivity target);
 }

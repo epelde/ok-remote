@@ -13,6 +13,7 @@ import io.github.epelde.okremote.business.ToggleInteractorImpl;
 import io.github.epelde.okremote.data.ApiRepositoryImpl;
 import io.github.epelde.okremote.data.ApiRepositoy;
 import io.github.epelde.okremote.data.network.ApiService;
+import io.github.epelde.okremote.data.network.RetryCookieSession;
 import io.github.epelde.okremote.ui.main.MainContract;
 import io.github.epelde.okremote.ui.main.MainPresenter;
 import retrofit2.Retrofit;
@@ -55,8 +56,15 @@ public class ApplicationModule {
 
     @Singleton
     @Provides
+    RetryCookieSession provideRetryCookieSession(LoginInteractor loginInteractor) {
+        return new RetryCookieSession(loginInteractor);
+    }
+
+    @Singleton
+    @Provides
     public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor checkStatusInteractor,
-                                                           ToggleInteractor toggleLED) {
-        return new MainPresenter(checkStatusInteractor, toggleLED);
+                                                           ToggleInteractor toggleLED,
+                                                           RetryCookieSession retryCookieSession) {
+        return new MainPresenter(checkStatusInteractor, toggleLED, retryCookieSession);
     }
 }

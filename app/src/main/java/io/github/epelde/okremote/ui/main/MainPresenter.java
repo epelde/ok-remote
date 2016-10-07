@@ -2,11 +2,14 @@ package io.github.epelde.okremote.ui.main;
 
 import android.util.Log;
 
+import java.util.List;
+
 import io.github.epelde.okremote.business.CheckStatusInteractor;
 import io.github.epelde.okremote.business.ToggleInteractor;
 import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
 import io.github.epelde.okremote.data.model.ToggleCommandResponse;
+import io.github.epelde.okremote.data.network.RetryCookieSession;
 import rx.Subscription;
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -22,12 +25,15 @@ public class MainPresenter implements MainContract.MainPresenter {
 
     private ToggleInteractor toggleInteractor;
 
+    private RetryCookieSession retryCookieSession;
+
     private Subscription subscription;
 
     public MainPresenter(CheckStatusInteractor checkStatusInteractor,
-                         ToggleInteractor toggleInteractor) {
+                         ToggleInteractor toggleInteractor, RetryCookieSession retryCookieSession) {
         this.checkStatusInteractor = checkStatusInteractor;
         this.toggleInteractor = toggleInteractor;
+        this.retryCookieSession = retryCookieSession;
     }
 
     @Override
@@ -46,13 +52,16 @@ public class MainPresenter implements MainContract.MainPresenter {
     @Override
     public void init() {
         checkStatusInteractor.execute()
+                .retryWhen(retryCookieSession)
                 .subscribe(new Action1<DeviceCollection>() {
                     @Override
                     public void call(DeviceCollection deviceCollection) {
                         for (Device device : deviceCollection.getDevices()) {
                             Log.d("TAG", "* * * DEVICE:" + device.getLabel() + "/" +
-                                    device.getChannelId() + "/" + device.getParentId());
+                                    device.getChannelId() + "/" + device.getParentId() +
+                                "/" + device.getName());
                         }
+                        displayStatus(deviceCollection.getDevices());
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -69,26 +78,28 @@ public class MainPresenter implements MainContract.MainPresenter {
 
     @Override
     public void toggle(boolean checked) {
-        toggleInteractor.execute(checked).subscribe(new Action1<ToggleCommandResponse>() {
-            @Override
-            public void call(ToggleCommandResponse commandResponse) {
-                Log.d("TAG", "* * * STATUS:" + commandResponse.getStatus());
-            }
-        }, new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
+        toggleInteractor.execute(checked)
+                .retryWhen(retryCookieSession)
+                .subscribe(new Action1<ToggleCommandResponse>() {
+                    @Override
+                    public void call(ToggleCommandResponse commandResponse) {
+                        Log.d("TAG", "* * * CURRENT STATUS:" + commandResponse.getStatus());
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
 
-            }
-        }, new Action0() {
-            @Override
-            public void call() {
-                Log.d("TAG", "* * * TOGGLE COMPLETED");
-            }
-        });
+                    }
+                }, new Action0() {
+                    @Override
+                    public void call() {
+                        Log.d("TAG", "* * * TOGGLE COMMAND COMPLETED");
+                    }
+                });
     }
 
-    private void displayStatus() {
-        this.view.displayStatus(true);
+    private void displayStatus(List<Device> devices) {
+        this.view.displayStatus(devices);
     }
 
 }

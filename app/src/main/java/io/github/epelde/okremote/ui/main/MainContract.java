@@ -1,5 +1,9 @@
 package io.github.epelde.okremote.ui.main;
 
+import java.util.List;
+
+import io.github.epelde.okremote.data.model.Device;
+
 /**
  * Created by epelde on 29/9/16.
  */
@@ -7,7 +11,7 @@ public interface MainContract {
 
     interface MainView {
 
-        void displayStatus(boolean checked);
+        void displayStatus(List<Device> devices);
     }
 
     interface MainPresenter {
