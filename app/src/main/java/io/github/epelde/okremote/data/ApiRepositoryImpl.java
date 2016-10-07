@@ -1,7 +1,10 @@
 package io.github.epelde.okremote.data;
 
-import io.github.epelde.okremote.data.model.Login;
-import io.github.epelde.okremote.data.model.LoginResponse;
+import io.github.epelde.okremote.data.model.Device;
+import io.github.epelde.okremote.data.model.DeviceCollection;
+import io.github.epelde.okremote.data.model.LoginCredentials;
+import io.github.epelde.okremote.data.model.LoginPermissions;
+import io.github.epelde.okremote.data.network.ApiService;
 import rx.Observable;
 
 /**
@@ -9,13 +12,23 @@ import rx.Observable;
  */
 public class ApiRepositoryImpl implements ApiRepositoy {
 
-    private ApiService apiService;
+    private ApiService api;
 
-    public ApiRepositoryImpl(ApiService apiService) {
-        this.apiService = apiService;
+    public ApiRepositoryImpl(ApiService api) {
+        this.api = api;
     }
 
-    public Observable<LoginResponse> getData() {
-        return apiService.login(new Login("admin", "admin"));
+    public Observable<LoginPermissions> login() {
+        return api.login(new LoginCredentials("admin", "admin"));
+    }
+
+    @Override
+    public Observable<DeviceCollection> getStatus() {
+        return api.getDeviceStatus();
+    }
+
+    @Override
+    public Observable<Device> toggle() {
+        return api.toggle();
     }
 }

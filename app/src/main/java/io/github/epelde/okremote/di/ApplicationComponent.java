@@ -1,5 +1,7 @@
 package io.github.epelde.okremote.di;
 
+import android.app.Application;
+
 import javax.inject.Singleton;
 
 import dagger.Component;

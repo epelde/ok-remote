@@ -1,9 +1,16 @@
 package io.github.epelde.okremote.di;
 
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.net.CookieStore;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.github.epelde.okremote.data.network.InMemoryPersistentCookieStore;
+import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -50,12 +57,25 @@ public class NetworkModule {
 
     @Singleton
     @Provides
+    CookieStore provideCookieStore() {
+        return new InMemoryPersistentCookieStore();
+    }
+
+    @Singleton
+    @Provides
+    CookieHandler provideCookieHandler(CookieStore cookieStore) {
+        return new CookieManager(cookieStore, CookiePolicy.ACCEPT_ORIGINAL_SERVER);
+    }
+
+    @Singleton
+    @Provides
     Retrofit provideRetrofit(Retrofit.Builder builder,
                              OkHttpClient.Builder client,
                              GsonConverterFactory converterFactory,
                              RxJavaCallAdapterFactory callAdapterFactory,
-                             HttpLoggingInterceptor httpLoggingInterceptor) {
-        client.addInterceptor(httpLoggingInterceptor);
+                             HttpLoggingInterceptor httpLoggingInterceptor,
+                             CookieHandler cookieHandler) {
+        client.cookieJar(new JavaNetCookieJar(cookieHandler)).addInterceptor(httpLoggingInterceptor);
         return builder.baseUrl("http://46.27.238.138:10000/")
                 .client(client.build())
                 .addConverterFactory(converterFactory)

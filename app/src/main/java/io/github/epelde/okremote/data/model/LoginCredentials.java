@@ -1,18 +1,15 @@
 package io.github.epelde.okremote.data.model;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by epelde on 29/9/16.
  */
-public class Login {
+public class LoginCredentials {
 
     private String username;
 
     private String password;
 
-
-    public Login(String username, String password) {
+    public LoginCredentials(String username, String password) {
         this.username = username;
         this.password = password;
     }

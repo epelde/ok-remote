@@ -1,6 +1,8 @@
 package io.github.epelde.okremote.data;
 
-import io.github.epelde.okremote.data.model.LoginResponse;
+import io.github.epelde.okremote.data.model.Device;
+import io.github.epelde.okremote.data.model.DeviceCollection;
+import io.github.epelde.okremote.data.model.LoginPermissions;
 import rx.Observable;
 
 /**
@@ -8,5 +10,9 @@ import rx.Observable;
  */
 public interface ApiRepositoy {
 
-    Observable<LoginResponse> getData();
+    Observable<LoginPermissions> login();
+
+    Observable<DeviceCollection> getStatus();
+
+    Observable<Device> toggle();
 }

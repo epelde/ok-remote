@@ -1,7 +1,6 @@
 package io.github.epelde.okremote.business;
 
-import io.github.epelde.okremote.data.model.Login;
-import io.github.epelde.okremote.data.model.LoginResponse;
+import io.github.epelde.okremote.data.model.LoginPermissions;
 import rx.Observable;
 
 /**
@@ -9,5 +8,5 @@ import rx.Observable;
  */
 public interface LoginInteractor {
 
-    Observable<LoginResponse> login();
+    Observable<LoginPermissions> execute();
 }

@@ -51,6 +51,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     private void initViews() {
-        lightSwitch.setEnabled(false);
+        lightSwitch.setEnabled(true);
     }
 }
