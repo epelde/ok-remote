@@ -1,8 +1,8 @@
 package io.github.epelde.okremote.data;
 
-import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
 import io.github.epelde.okremote.data.model.LoginPermissions;
+import io.github.epelde.okremote.data.model.ToggleCommandResponse;
 import rx.Observable;
 
 /**
@@ -14,5 +14,5 @@ public interface ApiRepositoy {
 
     Observable<DeviceCollection> getStatus();
 
-    Observable<Device> toggle();
+    Observable<ToggleCommandResponse> toggle(boolean checke);
 }

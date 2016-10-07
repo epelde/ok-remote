@@ -5,6 +5,7 @@ import android.app.Application;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import io.github.epelde.okremote.OkRemoteApp;
 import io.github.epelde.okremote.ui.main.MainActivity;
 
 /**
@@ -13,6 +14,8 @@ import io.github.epelde.okremote.ui.main.MainActivity;
 @Singleton
 @Component(modules = {ApplicationModule.class, NetworkModule.class})
 public interface ApplicationComponent {
+
+    void inject(OkRemoteApp target);
 
     void inject(MainActivity target);
 }

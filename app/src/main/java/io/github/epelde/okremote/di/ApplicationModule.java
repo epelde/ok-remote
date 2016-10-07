@@ -55,9 +55,8 @@ public class ApplicationModule {
 
     @Singleton
     @Provides
-    public MainContract.MainPresenter provideMainPresenter(LoginInteractor loginInteractor,
-                                                           CheckStatusInteractor checkStatusInteractor,
+    public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor checkStatusInteractor,
                                                            ToggleInteractor toggleLED) {
-        return new MainPresenter(loginInteractor, checkStatusInteractor, toggleLED);
+        return new MainPresenter(checkStatusInteractor, toggleLED);
     }
 }

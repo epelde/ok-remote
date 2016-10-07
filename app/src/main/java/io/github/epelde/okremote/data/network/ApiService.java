@@ -1,9 +1,10 @@
 package io.github.epelde.okremote.data.network;
 
-import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
 import io.github.epelde.okremote.data.model.LoginCredentials;
 import io.github.epelde.okremote.data.model.LoginPermissions;
+import io.github.epelde.okremote.data.model.ToggleCommand;
+import io.github.epelde.okremote.data.model.ToggleCommandResponse;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -21,5 +22,5 @@ public interface ApiService {
     Observable<DeviceCollection> getDeviceStatus();
 
     @POST("/slip/Firmware/methods/operate")
-    Observable<Device> toggle();
+    Observable<ToggleCommandResponse> toggle(@Body ToggleCommand command);
 }

@@ -2,6 +2,7 @@ package io.github.epelde.okremote.business;
 
 import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
+import io.github.epelde.okremote.data.model.ToggleCommandResponse;
 import rx.Observable;
 
 /**
@@ -9,5 +10,5 @@ import rx.Observable;
  */
 public interface ToggleInteractor {
 
-    Observable<Device> execute();
+    Observable<ToggleCommandResponse> execute(boolean checked);
 }

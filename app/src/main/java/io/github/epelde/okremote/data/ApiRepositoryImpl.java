@@ -1,9 +1,10 @@
 package io.github.epelde.okremote.data;
 
-import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
 import io.github.epelde.okremote.data.model.LoginCredentials;
 import io.github.epelde.okremote.data.model.LoginPermissions;
+import io.github.epelde.okremote.data.model.ToggleCommand;
+import io.github.epelde.okremote.data.model.ToggleCommandResponse;
 import io.github.epelde.okremote.data.network.ApiService;
 import rx.Observable;
 
@@ -28,7 +29,15 @@ public class ApiRepositoryImpl implements ApiRepositoy {
     }
 
     @Override
-    public Observable<Device> toggle() {
-        return api.toggle();
+    public Observable<ToggleCommandResponse> toggle(boolean checked) {
+        ToggleCommand command = new ToggleCommand();
+        command.setChannelId(2);
+        command.setParentId(0);
+        if (checked) {
+            command.setStatus(1);
+        } else {
+            command.setStatus(0);
+        }
+        return api.toggle(command);
     }
 }
