@@ -66,7 +66,7 @@ public class MainPresenter implements MainContract.MainPresenter {
                 });
     }
 
-    @Override
+    /*@Override
     public void toggle(boolean checked) {
         toggleInteractor.execute(checked)
                 .retryWhen(retryCookieSession)
@@ -81,7 +81,7 @@ public class MainPresenter implements MainContract.MainPresenter {
                         Log.d("TAG", "* * * ERROR: " + throwable.getMessage());
                     }
                 });
-    }
+    }*/
 
     private void displayStatus(List<Device> devices) {
         this.view.displayStatus(devices);

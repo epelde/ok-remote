@@ -40,10 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         }
     }
 
-    public void toggle() {
-        //presenter.toggle(lightSwitch.isChecked());
-    }
-
     @Override
     public void displayStatus(List<Device> devices) {
         listView.setAdapter(new DevicesAdapter(this, devices));

@@ -61,4 +61,11 @@ public class Device {
     public void setChannelId(int channelId) {
         this.channelId = channelId;
     }
+
+    public boolean isChecked() {
+        if (this.status == 1) {
+            return true;
+        }
+        return false;
+    }
 }

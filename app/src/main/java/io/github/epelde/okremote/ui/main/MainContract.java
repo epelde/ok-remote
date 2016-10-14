@@ -21,7 +21,5 @@ public interface MainContract {
         void detachView();
 
         void init();
-
-        void toggle(boolean checked);
     }
 }
