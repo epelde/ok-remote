@@ -21,6 +21,8 @@ public class RetryCookieSession implements Func1<Observable<? extends Throwable>
         return throwable.flatMap(new Func1<Throwable, Observable<LoginPermissions>>() {
             @Override
             public Observable<LoginPermissions> call(Throwable throwable) {
+                // TODO We should check something about this Throwable before
+                // TODO executing the interactor. Probably we are interested in 401 error codes.
                 return loginInteractor.execute();
             }
         });

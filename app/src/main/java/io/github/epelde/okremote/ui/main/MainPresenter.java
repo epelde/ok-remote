@@ -11,7 +11,6 @@ import io.github.epelde.okremote.data.model.DeviceCollection;
 import io.github.epelde.okremote.data.model.ToggleCommandResponse;
 import io.github.epelde.okremote.data.network.RetryCookieSession;
 import rx.Subscription;
-import rx.functions.Action0;
 import rx.functions.Action1;
 
 /**
@@ -30,7 +29,8 @@ public class MainPresenter implements MainContract.MainPresenter {
     private Subscription subscription;
 
     public MainPresenter(CheckStatusInteractor checkStatusInteractor,
-                         ToggleInteractor toggleInteractor, RetryCookieSession retryCookieSession) {
+                         ToggleInteractor toggleInteractor,
+                         RetryCookieSession retryCookieSession) {
         this.checkStatusInteractor = checkStatusInteractor;
         this.toggleInteractor = toggleInteractor;
         this.retryCookieSession = retryCookieSession;
@@ -56,22 +56,12 @@ public class MainPresenter implements MainContract.MainPresenter {
                 .subscribe(new Action1<DeviceCollection>() {
                     @Override
                     public void call(DeviceCollection deviceCollection) {
-                        for (Device device : deviceCollection.getDevices()) {
-                            Log.d("TAG", "* * * DEVICE:" + device.getLabel() + "/" +
-                                    device.getChannelId() + "/" + device.getParentId() +
-                                "/" + device.getName());
-                        }
                         displayStatus(deviceCollection.getDevices());
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Log.d("TAG", "* * * ERROR: " + throwable.getMessage());
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-                        Log.d("TAG", "checkStatusInteractor completed!!!");
                     }
                 });
     }
@@ -88,12 +78,7 @@ public class MainPresenter implements MainContract.MainPresenter {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-                        Log.d("TAG", "* * * TOGGLE COMMAND COMPLETED");
+                        Log.d("TAG", "* * * ERROR: " + throwable.getMessage());
                     }
                 });
     }
@@ -101,5 +86,4 @@ public class MainPresenter implements MainContract.MainPresenter {
     private void displayStatus(List<Device> devices) {
         this.view.displayStatus(devices);
     }
-
 }

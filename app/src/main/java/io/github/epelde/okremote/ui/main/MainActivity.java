@@ -3,10 +3,7 @@ package io.github.epelde.okremote.ui.main;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -49,16 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void displayStatus(List<Device> devices) {
-        String[] fromColumns = {"label"};
-        int[] toViews = {R.id.text_device_label};
-        List<HashMap<String, String>> fillMaps = new ArrayList<HashMap<String, String>>();
-        for (Device device : devices) {
-            HashMap<String, String> map = new HashMap<String, String>();
-            map.put("label", device.getLabel());
-            fillMaps.add(map);
-        }
-        SimpleAdapter adapter = new SimpleAdapter(this, fillMaps,
-                R.layout.item_layout, fromColumns, toViews);
+        CustomArrayAdapter adapter = new CustomArrayAdapter(this, R.layout.item_layout, devices);
         listView.setAdapter(adapter);
     }
 }
