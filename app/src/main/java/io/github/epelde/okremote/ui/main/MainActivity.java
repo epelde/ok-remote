@@ -46,6 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void displayStatus(List<Device> devices) {
-        listView.setAdapter(new CustomArrayAdapter(this, R.layout.item_layout, devices));
+        listView.setAdapter(new DevicesAdapter(this, devices));
     }
 }
