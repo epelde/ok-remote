@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import io.github.epelde.okremote.OkRemoteApp;
 import io.github.epelde.okremote.R;
 import io.github.epelde.okremote.data.model.Device;
+import io.github.epelde.okremote.ui.main.adapter.DevicesAdapter;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 

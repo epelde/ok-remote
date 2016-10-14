@@ -1,4 +1,4 @@
-package io.github.epelde.okremote.ui.main;
+package io.github.epelde.okremote.ui.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
