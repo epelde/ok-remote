@@ -63,8 +63,8 @@ public class ApplicationModule {
     @Singleton
     @Provides
     public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor checkStatusInteractor,
-                                                           ToggleInteractor toggleLED,
                                                            RetryCookieSession retryCookieSession) {
-        return new MainPresenter(checkStatusInteractor, toggleLED, retryCookieSession);
+        return new MainPresenter(checkStatusInteractor, retryCookieSession);
     }
+
 }

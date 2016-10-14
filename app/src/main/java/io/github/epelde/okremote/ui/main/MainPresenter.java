@@ -4,11 +4,12 @@ import android.util.Log;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.github.epelde.okremote.business.CheckStatusInteractor;
-import io.github.epelde.okremote.business.ToggleInteractor;
+import io.github.epelde.okremote.business.util.RetryCookieSession;
 import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
-import io.github.epelde.okremote.business.util.RetryCookieSession;
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -21,17 +22,14 @@ public class MainPresenter implements MainContract.MainPresenter {
 
     private CheckStatusInteractor checkStatusInteractor;
 
-    private ToggleInteractor toggleInteractor;
-
     private RetryCookieSession retryCookieSession;
 
     private Subscription subscription;
 
+    @Inject
     public MainPresenter(CheckStatusInteractor checkStatusInteractor,
-                         ToggleInteractor toggleInteractor,
                          RetryCookieSession retryCookieSession) {
         this.checkStatusInteractor = checkStatusInteractor;
-        this.toggleInteractor = toggleInteractor;
         this.retryCookieSession = retryCookieSession;
     }
 
@@ -64,23 +62,6 @@ public class MainPresenter implements MainContract.MainPresenter {
                     }
                 });
     }
-
-    /*@Override
-    public void switchCompat(boolean checked) {
-        toggleInteractor.execute(checked)
-                .retryWhen(retryCookieSession)
-                .subscribe(new Action1<ToggleCommandResponse>() {
-                    @Override
-                    public void call(ToggleCommandResponse commandResponse) {
-                        Log.d("TAG", "* * * CURRENT STATUS:" + commandResponse.getStatus());
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Log.d("TAG", "* * * ERROR: " + throwable.getMessage());
-                    }
-                });
-    }*/
 
     private void displayStatus(List<Device> devices) {
         this.view.displayStatus(devices);
