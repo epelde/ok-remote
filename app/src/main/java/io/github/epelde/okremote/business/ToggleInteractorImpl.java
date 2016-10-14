@@ -1,5 +1,6 @@
 package io.github.epelde.okremote.business;
 
+import io.github.epelde.okremote.business.ToggleInteractor;
 import io.github.epelde.okremote.data.ApiRepositoy;
 import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.ToggleCommand;

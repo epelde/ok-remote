@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.epelde.okremote.data.network.InMemoryPersistentCookieStore;
+import io.github.epelde.okremote.data.network.util.InMemoryPersistentCookieStore;
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

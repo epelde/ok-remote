@@ -13,7 +13,7 @@ import io.github.epelde.okremote.business.ToggleInteractorImpl;
 import io.github.epelde.okremote.data.ApiRepositoryImpl;
 import io.github.epelde.okremote.data.ApiRepositoy;
 import io.github.epelde.okremote.data.network.ApiService;
-import io.github.epelde.okremote.data.network.RetryCookieSession;
+import io.github.epelde.okremote.business.util.RetryCookieSession;
 import io.github.epelde.okremote.ui.main.MainContract;
 import io.github.epelde.okremote.ui.main.MainPresenter;
 import retrofit2.Retrofit;

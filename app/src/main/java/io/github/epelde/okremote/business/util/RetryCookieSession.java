@@ -1,4 +1,4 @@
-package io.github.epelde.okremote.data.network;
+package io.github.epelde.okremote.business.util;
 
 import io.github.epelde.okremote.business.LoginInteractor;
 import io.github.epelde.okremote.data.model.LoginPermissions;

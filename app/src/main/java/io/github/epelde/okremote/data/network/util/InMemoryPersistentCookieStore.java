@@ -1,6 +1,4 @@
-package io.github.epelde.okremote.data.network;
-
-import android.util.Log;
+package io.github.epelde.okremote.data.network.util;
 
 import java.net.CookieStore;
 import java.net.HttpCookie;

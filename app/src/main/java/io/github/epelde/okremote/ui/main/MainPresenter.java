@@ -8,8 +8,7 @@ import io.github.epelde.okremote.business.CheckStatusInteractor;
 import io.github.epelde.okremote.business.ToggleInteractor;
 import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
-import io.github.epelde.okremote.data.model.ToggleCommandResponse;
-import io.github.epelde.okremote.data.network.RetryCookieSession;
+import io.github.epelde.okremote.business.util.RetryCookieSession;
 import rx.Subscription;
 import rx.functions.Action1;
 
