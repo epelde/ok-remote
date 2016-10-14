@@ -13,7 +13,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import io.github.epelde.okremote.R;
 import io.github.epelde.okremote.data.model.Device;
 
@@ -49,7 +48,7 @@ public class DevicesAdapter extends ArrayAdapter<Device> {
         TextView label;
 
         @BindView(R.id.switch_device)
-        SwitchCompat toggle;
+        SwitchCompat switchCompat;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
@@ -57,12 +56,12 @@ public class DevicesAdapter extends ArrayAdapter<Device> {
 
         public void bind(final Device device) {
             label.setText(device.getName());
-            toggle.setChecked(device.isChecked());
-            toggle.setOnClickListener(new View.OnClickListener() {
+            switchCompat.setChecked(device.isChecked());
+            switchCompat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d("TAG", "* * * TOGGLE:" + device.getChannelId() + "/" + device.getParentId() +
-                            "/" + toggle.isChecked());
+                            "/" + switchCompat.isChecked());
                 }
             });
         }

@@ -67,7 +67,7 @@ public class MainPresenter implements MainContract.MainPresenter {
     }
 
     /*@Override
-    public void toggle(boolean checked) {
+    public void switchCompat(boolean checked) {
         toggleInteractor.execute(checked)
                 .retryWhen(retryCookieSession)
                 .subscribe(new Action1<ToggleCommandResponse>() {
