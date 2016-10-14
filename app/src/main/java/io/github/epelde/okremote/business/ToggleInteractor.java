@@ -10,5 +10,5 @@ import rx.Observable;
  */
 public interface ToggleInteractor {
 
-    Observable<ToggleCommandResponse> execute(boolean checked);
+    Observable<ToggleCommandResponse> execute(Device device);
 }

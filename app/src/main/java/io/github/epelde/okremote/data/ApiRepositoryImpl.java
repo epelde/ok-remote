@@ -19,8 +19,8 @@ public class ApiRepositoryImpl implements ApiRepositoy {
         this.api = api;
     }
 
-    public Observable<LoginPermissions> login() {
-        return api.login(new LoginCredentials("admin", "admin"));
+    public Observable<LoginPermissions> login(LoginCredentials credentials) {
+        return api.login(credentials);
     }
 
     @Override
@@ -29,15 +29,7 @@ public class ApiRepositoryImpl implements ApiRepositoy {
     }
 
     @Override
-    public Observable<ToggleCommandResponse> toggle(boolean checked) {
-        ToggleCommand command = new ToggleCommand();
-        command.setChannelId(2);
-        command.setParentId(0);
-        if (checked) {
-            command.setStatus(1);
-        } else {
-            command.setStatus(0);
-        }
-        return api.toggle(command);
+    public Observable<ToggleCommandResponse> toggle(ToggleCommand toggleCommand) {
+        return api.toggle(toggleCommand);
     }
 }

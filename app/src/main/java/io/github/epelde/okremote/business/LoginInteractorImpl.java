@@ -1,6 +1,7 @@
 package io.github.epelde.okremote.business;
 
 import io.github.epelde.okremote.data.ApiRepositoy;
+import io.github.epelde.okremote.data.model.LoginCredentials;
 import io.github.epelde.okremote.data.model.LoginPermissions;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,7 +20,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     @Override
     public Observable<LoginPermissions> execute() {
-        return this.api.login()
+        return this.api.login(new LoginCredentials("admin", "admin"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
