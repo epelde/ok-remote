@@ -1,8 +1,7 @@
 package io.github.epelde.okremote.business;
 
-import io.github.epelde.okremote.data.model.Device;
-import io.github.epelde.okremote.data.model.DeviceCollection;
-import io.github.epelde.okremote.data.model.ToggleCommandResponse;
+import io.github.epelde.okremote.data.entity.Device;
+import io.github.epelde.okremote.data.entity.ToggleCommandResponse;
 import rx.Observable;
 
 /**

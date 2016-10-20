@@ -7,8 +7,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.github.epelde.okremote.data.model.Device;
-import io.github.epelde.okremote.ui.main.entity.DeviceModel;
+import io.github.epelde.okremote.data.entity.Device;
+import io.github.epelde.okremote.ui.presentation.DeviceModel;
 
 /**
  * Created by epelde on 20/10/16.

@@ -1,7 +1,6 @@
 package io.github.epelde.okremote.business;
 
-import io.github.epelde.okremote.data.model.Device;
-import io.github.epelde.okremote.data.model.DeviceCollection;
+import io.github.epelde.okremote.data.entity.DeviceCollection;
 import rx.Observable;
 
 /**

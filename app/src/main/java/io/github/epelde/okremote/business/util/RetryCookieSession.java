@@ -4,7 +4,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.github.epelde.okremote.business.LoginInteractor;
-import io.github.epelde.okremote.data.model.LoginPermissions;
+import io.github.epelde.okremote.data.entity.LoginPermissions;
 import rx.Observable;
 import rx.functions.Func1;
 

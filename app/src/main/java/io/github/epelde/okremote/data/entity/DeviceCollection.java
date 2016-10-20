@@ -1,4 +1,4 @@
-package io.github.epelde.okremote.data.model;
+package io.github.epelde.okremote.data.entity;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,9 +1,9 @@
 package io.github.epelde.okremote.business;
 
 import io.github.epelde.okremote.data.ApiRepositoy;
-import io.github.epelde.okremote.data.model.Device;
-import io.github.epelde.okremote.data.model.ToggleCommand;
-import io.github.epelde.okremote.data.model.ToggleCommandResponse;
+import io.github.epelde.okremote.data.entity.Device;
+import io.github.epelde.okremote.data.entity.ToggleCommand;
+import io.github.epelde.okremote.data.entity.ToggleCommandResponse;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

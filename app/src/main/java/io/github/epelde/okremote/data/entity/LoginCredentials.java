@@ -1,4 +1,4 @@
-package io.github.epelde.okremote.data.model;
+package io.github.epelde.okremote.data.entity;
 
 /**
  * Created by epelde on 29/9/16.

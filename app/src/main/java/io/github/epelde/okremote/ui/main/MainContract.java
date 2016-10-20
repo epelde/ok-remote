@@ -1,9 +1,8 @@
 package io.github.epelde.okremote.ui.main;
 
-import java.util.Collection;
 import java.util.List;
 
-import io.github.epelde.okremote.ui.main.entity.DeviceModel;
+import io.github.epelde.okremote.ui.presentation.DeviceModel;
 
 /**
  * Created by epelde on 29/9/16.

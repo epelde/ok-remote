@@ -1,6 +1,6 @@
 package io.github.epelde.okremote.business;
 
-import io.github.epelde.okremote.data.model.LoginPermissions;
+import io.github.epelde.okremote.data.entity.LoginPermissions;
 import rx.Observable;
 
 /**

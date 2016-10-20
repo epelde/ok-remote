@@ -1,6 +1,6 @@
-package io.github.epelde.okremote.ui.main.entity;
+package io.github.epelde.okremote.ui.presentation;
 
-import io.github.epelde.okremote.data.model.Device;
+import io.github.epelde.okremote.data.entity.Device;
 
 /**
  * Created by epelde on 20/10/16.

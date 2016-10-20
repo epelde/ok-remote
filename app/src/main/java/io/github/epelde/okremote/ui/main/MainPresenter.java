@@ -8,8 +8,8 @@ import javax.inject.Inject;
 
 import io.github.epelde.okremote.business.CheckStatusInteractor;
 import io.github.epelde.okremote.business.util.RetryCookieSession;
-import io.github.epelde.okremote.data.model.DeviceCollection;
-import io.github.epelde.okremote.ui.main.entity.DeviceModel;
+import io.github.epelde.okremote.data.entity.DeviceCollection;
+import io.github.epelde.okremote.ui.presentation.DeviceModel;
 import io.github.epelde.okremote.ui.main.mapper.DeviceModelMapper;
 import rx.Subscription;
 import rx.functions.Action1;
