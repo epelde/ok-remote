@@ -2,7 +2,6 @@ package io.github.epelde.okremote.ui.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.epelde.okremote.R;
-import io.github.epelde.okremote.data.model.Device;
+import io.github.epelde.okremote.ui.main.entity.DeviceModel;
 
 /**
  * Created by epelde on 14/10/16.
  */
-public class DevicesAdapter extends ArrayAdapter<Device> {
+public class DevicesAdapter extends ArrayAdapter<DeviceModel> {
 
-    private List<Device> items;
+    private List<DeviceModel> items;
 
-    public DevicesAdapter(Context context, List<Device> items) {
+    public DevicesAdapter(Context context, List<DeviceModel> items) {
         super(context, 0, items);
         this.items = items;
     }
@@ -54,14 +53,12 @@ public class DevicesAdapter extends ArrayAdapter<Device> {
             ButterKnife.bind(this, view);
         }
 
-        public void bind(final Device device) {
+        public void bind(final DeviceModel device) {
             label.setText(device.getName());
-            switchCompat.setChecked(device.isChecked());
+            switchCompat.setChecked(device.isStatus());
             switchCompat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("TAG", "* * * TOGGLE:" + device.getChannelId() + "/" + device.getParentId() +
-                            "/" + switchCompat.isChecked());
                 }
             });
         }

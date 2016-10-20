@@ -8,8 +8,9 @@ import javax.inject.Inject;
 
 import io.github.epelde.okremote.business.CheckStatusInteractor;
 import io.github.epelde.okremote.business.util.RetryCookieSession;
-import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.DeviceCollection;
+import io.github.epelde.okremote.ui.main.entity.DeviceModel;
+import io.github.epelde.okremote.ui.main.mapper.DeviceModelMapper;
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -24,13 +25,17 @@ public class MainPresenter implements MainContract.MainPresenter {
 
     private RetryCookieSession retryCookieSession;
 
+    private DeviceModelMapper mapper;
+
     private Subscription subscription;
 
     @Inject
     public MainPresenter(CheckStatusInteractor checkStatusInteractor,
-                         RetryCookieSession retryCookieSession) {
+                         RetryCookieSession retryCookieSession,
+                         DeviceModelMapper mapper) {
         this.checkStatusInteractor = checkStatusInteractor;
         this.retryCookieSession = retryCookieSession;
+        this.mapper = mapper;
     }
 
     @Override
@@ -53,7 +58,7 @@ public class MainPresenter implements MainContract.MainPresenter {
                 .subscribe(new Action1<DeviceCollection>() {
                     @Override
                     public void call(DeviceCollection deviceCollection) {
-                        displayStatus(deviceCollection.getDevices());
+                        displayStatus(mapper.transform(deviceCollection.getDevices()));
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -63,7 +68,7 @@ public class MainPresenter implements MainContract.MainPresenter {
                 });
     }
 
-    private void displayStatus(List<Device> devices) {
+    private void displayStatus(List<DeviceModel> devices) {
         this.view.displayStatus(devices);
     }
 }

@@ -12,8 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.epelde.okremote.OkRemoteApp;
 import io.github.epelde.okremote.R;
-import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.ui.main.adapter.DevicesAdapter;
+import io.github.epelde.okremote.ui.main.entity.DeviceModel;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         ((OkRemoteApp)getApplication()).getApplicationComponent().inject(this);
         ButterKnife.bind(this);
         presenter.attachView(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         presenter.init();
     }
 
@@ -42,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     @Override
-    public void displayStatus(List<Device> devices) {
+    public void displayStatus(List<DeviceModel> devices) {
         listView.setAdapter(new DevicesAdapter(this, devices));
     }
 }

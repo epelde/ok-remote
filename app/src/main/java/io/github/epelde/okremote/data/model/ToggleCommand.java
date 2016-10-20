@@ -8,28 +8,28 @@ import com.google.gson.annotations.SerializedName;
 public class ToggleCommand {
 
     @SerializedName("pID")
-    private int parentId;
+    private int parent;
 
     @SerializedName("cID")
-    private int channelId;
+    private int channel;
 
     @SerializedName("Ctrl")
     private int status;
 
-    public int getParentId() {
-        return parentId;
+    public int getParent() {
+        return parent;
     }
 
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
+    public void setParent(int parent) {
+        this.parent = parent;
     }
 
-    public int getChannelId() {
-        return channelId;
+    public int getChannel() {
+        return channel;
     }
 
-    public void setChannelId(int channelId) {
-        this.channelId = channelId;
+    public void setChannel(int channel) {
+        this.channel = channel;
     }
 
     public int getStatus() {

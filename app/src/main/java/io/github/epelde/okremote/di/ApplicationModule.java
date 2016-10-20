@@ -4,18 +4,19 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.epelde.okremote.business.CheckStatusInteractorImpl;
 import io.github.epelde.okremote.business.CheckStatusInteractor;
+import io.github.epelde.okremote.business.CheckStatusInteractorImpl;
 import io.github.epelde.okremote.business.LoginInteractor;
 import io.github.epelde.okremote.business.LoginInteractorImpl;
 import io.github.epelde.okremote.business.ToggleInteractor;
 import io.github.epelde.okremote.business.ToggleInteractorImpl;
+import io.github.epelde.okremote.business.util.RetryCookieSession;
 import io.github.epelde.okremote.data.ApiRepositoryImpl;
 import io.github.epelde.okremote.data.ApiRepositoy;
 import io.github.epelde.okremote.data.network.ApiService;
-import io.github.epelde.okremote.business.util.RetryCookieSession;
 import io.github.epelde.okremote.ui.main.MainContract;
 import io.github.epelde.okremote.ui.main.MainPresenter;
+import io.github.epelde.okremote.ui.main.mapper.DeviceModelMapper;
 import retrofit2.Retrofit;
 
 /**
@@ -63,8 +64,9 @@ public class ApplicationModule {
     @Singleton
     @Provides
     public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor checkStatusInteractor,
-                                                           RetryCookieSession retryCookieSession) {
-        return new MainPresenter(checkStatusInteractor, retryCookieSession);
+                                                           RetryCookieSession retryCookieSession,
+                                                           DeviceModelMapper mapper) {
+        return new MainPresenter(checkStatusInteractor, retryCookieSession, mapper);
     }
 
 }

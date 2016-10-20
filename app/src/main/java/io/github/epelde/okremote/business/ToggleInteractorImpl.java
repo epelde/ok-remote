@@ -1,6 +1,5 @@
 package io.github.epelde.okremote.business;
 
-import io.github.epelde.okremote.business.ToggleInteractor;
 import io.github.epelde.okremote.data.ApiRepositoy;
 import io.github.epelde.okremote.data.model.Device;
 import io.github.epelde.okremote.data.model.ToggleCommand;
@@ -23,13 +22,9 @@ public class ToggleInteractorImpl implements ToggleInteractor {
     @Override
     public Observable<ToggleCommandResponse> execute(Device device) {
         ToggleCommand command = new ToggleCommand();
-        command.setChannelId(device.getChannelId());
-        command.setParentId(device.getParentId());
-        if (device.isChecked()) {
-            command.setStatus(1);
-        } else {
-            command.setStatus(0);
-        }
+        command.setChannel(device.getChannel());
+        command.setParent(device.getParent());
+        command.setStatus(device.getStatus());
         return api.toggle(command)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());

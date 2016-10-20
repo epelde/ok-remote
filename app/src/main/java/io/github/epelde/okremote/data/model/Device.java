@@ -14,10 +14,10 @@ public class Device {
     private String name;
 
     @SerializedName("Parent_ID")
-    private int parentId;
+    private int parent;
 
     @SerializedName("Channel_ID")
-    private int channelId;
+    private int channel;
 
     @SerializedName("Status")
     private int status;
@@ -46,26 +46,19 @@ public class Device {
         this.name = name;
     }
 
-    public int getParentId() {
-        return parentId;
+    public int getParent() {
+        return parent;
     }
 
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
+    public void setParent(int parent) {
+        this.parent = parent;
     }
 
-    public int getChannelId() {
-        return channelId;
+    public int getChannel() {
+        return channel;
     }
 
-    public void setChannelId(int channelId) {
-        this.channelId = channelId;
-    }
-
-    public boolean isChecked() {
-        if (this.status == 1) {
-            return true;
-        }
-        return false;
+    public void setChannel(int channel) {
+        this.channel = channel;
     }
 }
