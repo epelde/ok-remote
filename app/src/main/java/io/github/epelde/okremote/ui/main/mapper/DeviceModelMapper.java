@@ -38,4 +38,8 @@ public class DeviceModelMapper {
         return list;
     }
 
+    public Device transform(DeviceModel model) {
+        return new Device(model);
+    }
+
 }

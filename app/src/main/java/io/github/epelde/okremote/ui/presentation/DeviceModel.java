@@ -68,4 +68,8 @@ public class DeviceModel {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public void revertStatus() {
+        this.status = !this.status;
+    }
 }

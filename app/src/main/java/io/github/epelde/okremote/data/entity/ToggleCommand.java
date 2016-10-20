@@ -16,6 +16,12 @@ public class ToggleCommand {
     @SerializedName("Ctrl")
     private int status;
 
+    public ToggleCommand(Device device) {
+        this.parent = device.getParent();
+        this.channel = device.getChannel();
+        this.status = device.getStatus();
+    }
+
     public int getParent() {
         return parent;
     }

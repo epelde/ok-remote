@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import io.github.epelde.okremote.OkRemoteApp;
 import io.github.epelde.okremote.ui.main.MainActivity;
+import io.github.epelde.okremote.ui.main.adapter.DevicesAdapter;
 
 /**
  * Created by epelde on 29/9/16.
@@ -16,4 +17,6 @@ import io.github.epelde.okremote.ui.main.MainActivity;
 public interface ApplicationComponent {
 
     void inject(MainActivity target);
+
+    void inject(DevicesAdapter.ViewHolder target);
 }

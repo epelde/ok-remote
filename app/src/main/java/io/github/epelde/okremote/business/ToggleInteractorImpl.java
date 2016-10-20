@@ -21,10 +21,7 @@ public class ToggleInteractorImpl implements ToggleInteractor {
 
     @Override
     public Observable<ToggleCommandResponse> execute(Device device) {
-        ToggleCommand command = new ToggleCommand();
-        command.setChannel(device.getChannel());
-        command.setParent(device.getParent());
-        command.setStatus(device.getStatus());
+        ToggleCommand command = new ToggleCommand(device);
         return api.toggle(command)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());

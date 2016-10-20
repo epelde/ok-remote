@@ -14,6 +14,8 @@ import io.github.epelde.okremote.business.util.RetryCookieSession;
 import io.github.epelde.okremote.data.ApiRepositoryImpl;
 import io.github.epelde.okremote.data.ApiRepositoy;
 import io.github.epelde.okremote.data.network.ApiService;
+import io.github.epelde.okremote.ui.main.DeviceContract;
+import io.github.epelde.okremote.ui.main.DevicePresenter;
 import io.github.epelde.okremote.ui.main.MainContract;
 import io.github.epelde.okremote.ui.main.MainPresenter;
 import io.github.epelde.okremote.ui.main.mapper.DeviceModelMapper;
@@ -57,10 +59,16 @@ public class ApplicationModule {
 
     @Singleton
     @Provides
-    public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor checkStatusInteractor,
+    public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor interactor,
                                                            RetryCookieSession retryCookieSession,
                                                            DeviceModelMapper mapper) {
-        return new MainPresenter(checkStatusInteractor, retryCookieSession, mapper);
+        return new MainPresenter(interactor, retryCookieSession, mapper);
     }
 
+    @Provides
+    public DeviceContract.DevicePresenter provideDevicePresenter(ToggleInteractor interactor,
+                                                                 RetryCookieSession retryCookieSession,
+                                                                 DeviceModelMapper mapper) {
+        return new DevicePresenter(interactor, retryCookieSession, mapper);
+    }
 }
