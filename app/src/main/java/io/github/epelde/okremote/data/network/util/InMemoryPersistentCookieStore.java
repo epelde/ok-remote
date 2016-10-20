@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.inject.Inject;
-
 /**
  * Created by epelde on 30/9/16.
  */
@@ -20,7 +18,6 @@ public class InMemoryPersistentCookieStore implements CookieStore {
 
     private Map<URI, Set<HttpCookie>> allCookies;
 
-    @Inject
     public InMemoryPersistentCookieStore() {
         allCookies = new HashMap<URI, Set<HttpCookie>>();
     }

@@ -57,12 +57,6 @@ public class ApplicationModule {
 
     @Singleton
     @Provides
-    RetryCookieSession provideRetryCookieSession(LoginInteractor loginInteractor) {
-        return new RetryCookieSession(loginInteractor);
-    }
-
-    @Singleton
-    @Provides
     public MainContract.MainPresenter provideMainPresenter(CheckStatusInteractor checkStatusInteractor,
                                                            RetryCookieSession retryCookieSession,
                                                            DeviceModelMapper mapper) {
